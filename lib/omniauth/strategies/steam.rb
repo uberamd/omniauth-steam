@@ -4,6 +4,15 @@ require 'multi_json'
 module OmniAuth
   module Strategies
     class Steam < OmniAuth::Strategies::OpenID
+
+      def self.logger
+        @@logger ||= defined?(Rails) ? Rails.logger : Logger.new(STDOUT)
+      end
+    
+      def self.logger=(logger)
+        @@logger = logger
+      end
+
       args :api_key
 
       option :api_key, nil
@@ -46,7 +55,7 @@ module OmniAuth
       end
 
       def player
-        puts raw_info.inspect
+         OmniAuth.Strategies.Steam.logger.debug raw_info.inspect
         @player ||= raw_info["response"]["players"].first
       end
 
