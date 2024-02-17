@@ -46,6 +46,7 @@ module OmniAuth
       end
 
       def player
+        puts raw_info.inspect
         @player ||= raw_info["response"]["players"].first
       end
 
