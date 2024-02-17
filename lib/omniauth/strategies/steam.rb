@@ -55,7 +55,7 @@ module OmniAuth
       end
 
       def player
-         OmniAuth.Strategies.Steam.logger.debug raw_info.inspect
+         self.logger.debug raw_info.inspect
         @player ||= raw_info["response"]["players"].first
       end
 
