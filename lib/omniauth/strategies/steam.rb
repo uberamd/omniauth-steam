@@ -5,11 +5,11 @@ module OmniAuth
   module Strategies
     class Steam < OmniAuth::Strategies::OpenID
 
-      def self.logger
+      def logger
         @@logger ||= defined?(Rails) ? Rails.logger : Logger.new(STDOUT)
       end
     
-      def self.logger=(logger)
+      def logger=(logger)
         @@logger = logger
       end
 
